@@ -1,0 +1,15 @@
+"This is a comment"
+
+"Snapshots output the memory pointer and a range of cells to the console, good for debugging. They must range from 0 to 29,999."
+!(0 :	10) "Before"
+++++>+++
+!(0 :	10) "After"
+
+"This is a macro definition"
+{add4=++++}
+
+"This is a macro definition with 2 macro calls inside it. Macro definitions cannot be nested"
+{add8={add4}{add4}} 
+
+>++[++<-->+ "Comments can be anywhere"  + [-]{add8} -- + "Spaces are ignored"  ].
+!  (  1  : 34  )

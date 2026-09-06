@@ -1,0 +1,36 @@
+"Some basic forth instruction behaviors being replicated with macros"
+
+"Push the numbers to the stack"
+{0=>}
+{1=>+}
+{2=>++}
+{3=>+++}
+{4=>++++}
+{5=>+++++}
+
+{dup= "Duplicate the top number" [->+>+<<] >> [-<<+>>]< }
+{drop= "Pops the top number" [-]<}
+{swap= "Swap the two top number" <[->>+<<] > [-<+>] > [-<+>]< }
+{equal= "Are the two top numbers equal, pushes 255 if true, 0 if false" [-<->] < [[-]->]< }
+
+{add= "Adds the top two numbers" [-<+>]< }
+{sub= "Subtracts the top two numbers" [-<->]< }
+{mul= "Multiplies the top two numbers" <[->[->+>+<<]>[-<+>]<<] > [-] >> [-<<<+>>>]<<<}
+
+{1}{4}{add}
+!(0: 10)
+
+{dup}{2}{add}{dup}
+!(0: 10)
+
+{drop}
+!(0: 10)
+
+{swap}{dup}{3}
+!(0: 10)
+
+{equal}
+!(0: 10)
+
+{drop}{drop}{drop}{5}{5}{mul}{5}{mul}
+!(0: 10)
